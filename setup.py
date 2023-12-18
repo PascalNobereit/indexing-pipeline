@@ -10,5 +10,6 @@ setup(
         "pinecone-client",
         "psycopg2",
         "python-dotenv",
+        "tiktoken",
     ],
 )
