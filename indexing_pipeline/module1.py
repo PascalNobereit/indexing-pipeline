@@ -19,7 +19,7 @@ class IndexingPipeline:
         load_dotenv()
         pinecone.init()
 
-        self.pinecone_index = pinecone.Index(self.connector_id)
+
         embeddings = OpenAIEmbeddings()
 
         self.vectorstore = Pinecone.from_existing_index(
