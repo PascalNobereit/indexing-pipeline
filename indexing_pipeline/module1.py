@@ -23,7 +23,9 @@ class IndexingPipeline:
         embeddings = OpenAIEmbeddings()
 
         self.vectorstore = Pinecone.from_existing_index(
-            os.getenv("INDEX_NAME"), embedding=embeddings, namespace=self.namespace
+            os.getenv("INDEX_NAME"),
+            embedding=embeddings,
+            namespace=f"{self.namespace}_DEVELOPMENT",
         )
 
         record_namespace = f"pinecone/{self.connector_id}"
