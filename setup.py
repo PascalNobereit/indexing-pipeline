@@ -9,7 +9,7 @@ setup(
         "openai",
         "pinecone-client",
         "psycopg2",
-        "psycopg2-binary"
+        "psycopg2-binary",
         "python-dotenv",
         "tiktoken",
     ],
