@@ -7,12 +7,11 @@ import pinecone
 
 
 class IndexingPipeline:
-    def __init__(self, namespace: str, connector_id: str, db_url: str):
-        self.namespace = namespace
+    def __init__(self, vectorstore, connector_id: str, db_url: str):
+        self.vectorstore = vectorstore
         self.connector_id = connector_id
         self.db_url = db_url
-        self.pinecone_index = None
-        self.vectorstore = None
+
         self.record_manager = None
 
     def setup(self):
@@ -20,16 +19,8 @@ class IndexingPipeline:
         pinecone.init()
 
 
-        embeddings = OpenAIEmbeddings()
-
-        self.vectorstore = Pinecone.from_existing_index(
-            os.getenv("INDEX_NAME"),
-            embedding=embeddings,
-            namespace=f"{self.namespace}_DEVELOPMENT",
-        )
-
-        record_namespace = f"pinecone/{self.connector_id}"
-        self.record_manager = SQLRecordManager(record_namespace, db_url=self.db_url)
+      
+        self.record_manager = SQLRecordManager(self.connector_id, db_url=self.db_url)
         self.record_manager.create_schema()
 
     def run(self, data, source_id_key="source", cleanup="full"):
