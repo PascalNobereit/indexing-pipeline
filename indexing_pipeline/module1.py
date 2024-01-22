@@ -1,9 +1,9 @@
 from dotenv import load_dotenv
-import os
-from langchain.embeddings import OpenAIEmbeddings
+
+
 from langchain.indexes import SQLRecordManager
-from langchain.vectorstores import Pinecone
-import pinecone
+
+
 
 
 class IndexingPipeline:
@@ -16,7 +16,7 @@ class IndexingPipeline:
 
     def setup(self):
         load_dotenv()
-        pinecone.init()
+
 
 
       

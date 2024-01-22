@@ -7,7 +7,6 @@ setup(
     install_requires=[
         "langchain",
         "openai",
-        "pinecone-client",
         "psycopg2",
         "psycopg2-binary",
         "python-dotenv",
